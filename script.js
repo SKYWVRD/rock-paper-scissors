@@ -12,19 +12,19 @@ function computerPlay(){
 
 function playRound(playerSelection, computerSelection){
 
-    let responseString = null;
+    let outcomeString = null;
 
     if(playerSelection === 'rock' && computerSelection === 'scissors' ||
         playerSelection === 'scissors' && computerSelection === 'paper' ||
         playerSelection === 'paper' && computerSelection === 'rock'){
 
-        responseString = `You win ${playerSelection} beats ${computerSelection}`
+        outcomeString = `You win ${playerSelection} beats ${computerSelection}`
 
     } else if (playerSelection === computerSelection) {
-        responseString = `It is a draw, you both chose ${playerSelection}`
+        outcomeString = `It is a draw, you both chose ${playerSelection}`
     } else {
-        responseString =`You lose ${computerSelection} beats ${playerSelection}`
+        outcomeString =`You lose ${computerSelection} beats ${playerSelection}`
     }
 
-    return responseString
+    return outcomeString
 }
