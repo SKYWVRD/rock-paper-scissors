@@ -1,10 +1,10 @@
-let playerSelection = prompt("Choose Rock, Paper or Scissors")
+const choice_array = ['rock', 'paper', 'scissors'];
+let playerSelection = prompt("Choose Rock, Paper or Scissors").toLowerCase
 let computerSelection = computerPlay();
 
 console.log(playRound(playerSelection, computerSelection))
 
 function computerPlay(){
-    const choice_array = ['rock', 'paper', 'scissors'];
     let computerChoice = choice_array[Math.floor(Math.random()*3)];
     return computerChoice;
 
@@ -27,4 +27,5 @@ function playRound(playerSelection, computerSelection){
     }
 
     return outcomeString
-}
+};
+
