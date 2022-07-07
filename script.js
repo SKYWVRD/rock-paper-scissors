@@ -1,6 +1,12 @@
 const choice_array = ['rock', 'paper', 'scissors'];
 
-gameplayLoop();
+const rockButton = document.querySelector('.rock');
+const paperButton = document.querySelector('.paper');
+const scissorsButton = document.querySelector('.scissors');
+
+
+
+//gameplayLoop();
 
 function computerPlay(){
     let computerChoice = choice_array[Math.floor(Math.random()*3)];
@@ -34,30 +40,35 @@ function playRound(playerSelection, computerSelection){
     return outcome;
 };
 
-function gameplayLoop(){
-    let playerWins = 0;
-    let computerWins = 0;
+paperButton.addEventListener('click', () => playRound('paper', computerPlay()));
+rockButton.addEventListener('click', () => playRound('rock', computerPlay()));
+scissorsButton.addEventListener('click', () => playRound('scissors', computerPlay()));
 
-    for( let round = 0; round < 5; round++){
-        let computerSelection = computerPlay();
-        let playerSelection = prompt("Choose Rock, Paper or Scissors").toLowerCase()
-        let outcome = playRound(playerSelection, computerSelection);
 
-        switch (outcome) {
-            case 0:
-                playerWins++;
-                break;
-            case 1:
-                break;
-            case 2:
-                computerWins++;
-                break;
-        }
-    }
+// function gameplayLoop(){
+//     let playerWins = 0;
+//     let computerWins = 0;
 
-    if(playerWins > computerWins){
-        console.log(`Congratulations you are a won ${playerWins} rounds to ${computerWins} round`);
-    } else {
-        console.log(`Sorry you lost ${playerWins} rounds to ${computerWins} rounds`);
-    }
-}
+//     for( let round = 0; round < 5; round++ ){
+//         let computerSelection = computerPlay();
+//         let playerSelection = prompt("Choose Rock, Paper or Scissors").toLowerCase()
+//         let outcome = playRound(playerSelection, computerSelection);
+
+//         switch (outcome) {
+//             case 0:
+//                 playerWins++;
+//                 break;
+//             case 1:
+//                 break;
+//             case 2:
+//                 computerWins++;
+//                 break;
+//         }
+//     }
+
+//     if(playerWins > computerWins){
+//         console.log(`Congratulations you are won ${playerWins} rounds to ${computerWins} round`);
+//     } else {
+//         console.log(`Sorry you lost ${playerWins} rounds to ${computerWins} rounds`);
+//     }
+// }
