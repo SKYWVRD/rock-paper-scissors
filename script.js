@@ -8,7 +8,7 @@ const computerWins = document.querySelector('.computerWins');
 const resultText = document.querySelector('.result');
 
 let playerWinCount = 0;
-let computerWinsCount = 0;
+let computerWinCount = 0;
 
 
 
@@ -16,7 +16,7 @@ let computerWinsCount = 0;
 
 function initGame(){
     playerWinCount = 0;
-    computerWinsCount = 0;
+    computerWinCount = 0;
     resultText.textContent = "Time to play rock paper scissors"
 
     updateRoundCounts();
@@ -25,7 +25,11 @@ function initGame(){
 
 function updateRoundCounts(){
     playerWins.textContent = `Player Wins: ${playerWinCount}`;
-    computerWins.textContent = `Computer Wins: ${computerWinsCount}`
+    computerWins.textContent = `Computer Wins: ${computerWinCount}`
+}
+
+function updateResultText(result){
+    resultText.textContent = result;
 }
 
 function computerPlay(){
@@ -45,18 +49,18 @@ function playRound(playerSelection, computerSelection){
         playerSelection === 'paper' && computerSelection === 'rock'){
 
         outcomeString = `You win ${playerSelection} beats ${computerSelection}`;
-        outcome = 0;
+        playerWinCount++;
 
     } else if (playerSelection === computerSelection) {
         outcomeString = `It is a draw, you both chose ${playerSelection}`;
-        outcome = 1;
         
     } else {
         outcomeString =`You lose ${computerSelection} beats ${playerSelection}`;
-        outcome = 2;
+        computerWinCount++;
     }
 
-    console.log(outcomeString);
+    updateResultText(outcomeString);
+    updateRoundCounts();
 
     return outcome;
 };
