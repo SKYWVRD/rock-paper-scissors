@@ -14,10 +14,12 @@ let computerWinCount = 0;
 
 //gameplayLoop();
 
-function initGame(){
+function initGame(firstGame){
     playerWinCount = 0;
     computerWinCount = 0;
-    resultText.textContent = "Time to play rock paper scissors"
+
+    if(firstGame)
+        resultText.textContent = "Time to play rock paper scissors, first to 5 wins"
 
     updateRoundCounts();
 
@@ -62,7 +64,14 @@ function playRound(playerSelection, computerSelection){
     updateResultText(outcomeString);
     updateRoundCounts();
 
-    return outcome;
+    if(playerWinCount == 5){
+        updateResultText("You are a winner, lets play again");
+        initGame(false);
+    } else if (computerWinCount == 5){
+        updateResultText("Computer is the winner, try again next time");
+        initGame(false);
+    }
+        
 };
 
 // function gameplayLoop(){
@@ -93,7 +102,7 @@ function playRound(playerSelection, computerSelection){
 //     }
 // }
 
-initGame();
+initGame(true);
 
 paperButton.addEventListener('click', () => playRound('paper', computerPlay()));
 rockButton.addEventListener('click', () => playRound('rock', computerPlay()));
