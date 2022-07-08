@@ -3,16 +3,37 @@ const choice_array = ['rock', 'paper', 'scissors'];
 const rockButton = document.querySelector('.rock');
 const paperButton = document.querySelector('.paper');
 const scissorsButton = document.querySelector('.scissors');
+const playerWins = document.querySelector('.playerWins');
+const computerWins = document.querySelector('.computerWins');
+const resultText = document.querySelector('.result');
+
+let playerWinCount = 0;
+let computerWinsCount = 0;
 
 
 
 //gameplayLoop();
+
+function initGame(){
+    playerWinCount = 0;
+    computerWinsCount = 0;
+    resultText.textContent = "Time to play rock paper scissors"
+
+    updateRoundCounts();
+
+}
+
+function updateRoundCounts(){
+    playerWins.textContent = `Player Wins: ${playerWinCount}`;
+    computerWins.textContent = `Computer Wins: ${computerWinsCount}`
+}
 
 function computerPlay(){
     let computerChoice = choice_array[Math.floor(Math.random()*3)];
     return computerChoice;
 
 };
+
 
 function playRound(playerSelection, computerSelection){
 
@@ -39,11 +60,6 @@ function playRound(playerSelection, computerSelection){
 
     return outcome;
 };
-
-paperButton.addEventListener('click', () => playRound('paper', computerPlay()));
-rockButton.addEventListener('click', () => playRound('rock', computerPlay()));
-scissorsButton.addEventListener('click', () => playRound('scissors', computerPlay()));
-
 
 // function gameplayLoop(){
 //     let playerWins = 0;
@@ -72,3 +88,9 @@ scissorsButton.addEventListener('click', () => playRound('scissors', computerPla
 //         console.log(`Sorry you lost ${playerWins} rounds to ${computerWins} rounds`);
 //     }
 // }
+
+initGame();
+
+paperButton.addEventListener('click', () => playRound('paper', computerPlay()));
+rockButton.addEventListener('click', () => playRound('rock', computerPlay()));
+scissorsButton.addEventListener('click', () => playRound('scissors', computerPlay()));
